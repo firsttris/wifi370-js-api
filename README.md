@@ -16,13 +16,13 @@ wifi370.setOff();
 wifi370.setColor(wifi370.color.rgb(255, 0, 0));
 wifi370.getColor((error, response) => {
 });
-wifi370.setBrightness(this.selectedColor.value());
+wifi370.setBrightness(wifi370.color.value());
 wifi370.getBrightness((error, response) => {
 });
-wifi370.setHue(this.selectedColor.hue());
+wifi370.setHue(wifi370.color.hue());
 wifi370.getHue((error, response) => {
 });
-wifi370.setSaturation(this.selectedColor.saturationv());
+wifi370.setSaturation(wifi370.color.saturationv());
 wifi370.getSaturation((error, response) => {
 });
 ```
