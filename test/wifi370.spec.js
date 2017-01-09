@@ -1,10 +1,29 @@
 const assert = require('assert');
 const WIFI370 = require('./../index');
+const path = require('path');
+const fs = require('fs');
+const packageJsonPath = path.join(__dirname, './../package.json');
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
 
 describe('Test WIFI370', function () {
 
+    describe('Timeout Test', function () {
+        before(function () {
+            this.wifi370 = new WIFI370("191.167.0.1", "1234");
+        });
+
+        it('getOn should return status', function (done) {
+            this.wifi370.getOn((error, response) => {
+                assert.equal(error, "timeout");
+                assert.equal(response, false, "should false if device is not reachable");
+                console.log("Response: " + response);
+                done();
+            });
+        });
+    });
+
     before(function () {
-        this.wifi370 = new WIFI370("20.1.0.142",5577);
+        this.wifi370 = new WIFI370(packageJson.ledController.host,5577);
     });
 
     it('setOn should switch on', function (done) {
@@ -33,8 +52,8 @@ describe('Test WIFI370', function () {
     });
 
     it('setColor switch to red', function (done) {
-        const RedRGBArray = this.wifi370.color.rgb(255, 0, 0).round().array();
-        this.wifi370.setColor(RedRGBArray,(error, response) =>{
+        const red = this.wifi370.color.rgb(255, 0, 0);
+        this.wifi370.setColor(red,(error, response) =>{
             assert.equal(error, null);
             assert.equal(response, false, "returns false by success");
             done();
@@ -42,10 +61,18 @@ describe('Test WIFI370', function () {
     });
 
     it('setColor switch to white', function (done) {
-        const red = this.wifi370.color.rgb(255, 255, 255).round().array();
+        const white = this.wifi370.color.rgb(255, 255, 255);
         this.wifi370.setColor(red,(error, response) =>{
             assert.equal(error, null);
             assert.equal(response, false, "returns false by success");
+            done();
+        });
+    });
+
+    it('getColor should return color', function (done) {
+        this.wifi370.getColor((error, response) => {
+            assert.equal(error, null);
+            assert.equal(response.color.length, 3, "should be 3");
             done();
         });
     });

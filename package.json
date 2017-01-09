@@ -1,10 +1,13 @@
 {
   "name": "wifi370-js-api",
-  "version": "1.0.0",
-  "description": "small JavaScript interface for WIFI370 LED-Controller",
+  "version": "1.0.1",
+  "description": "lightweight JavaScript interface for WIFI370 LED-Controller",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/wifi370.spec.js"
+  },
+  "ledController": {
+    "host": "20.1.0.142"
   },
   "keywords": [
     "led",

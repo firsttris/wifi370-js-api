@@ -18,8 +18,8 @@ class WIFI370 {
 
     send (array, waitForResponse, callback) {
         const client = new net.Socket();
-        let error;
         let response = "";
+        client.setTimeout(1500);
         client.connect(this.port, this.host, () => {
             const buffer = new Buffer(array);
             client.write(buffer);
@@ -28,28 +28,31 @@ class WIFI370 {
             }
         });
         client.on('error', (err) => {
-            if(callback) callback(err, null);
+            if(callback) callback(err, response);
         });
         client.on('data', (data) => {
-            response = data.toString('hex');
+            response += data.toString('hex');
             client.end();
         });
         client.on('end', () => {
             if(callback) callback(null, response);
         });
+        client.on('timeout', function() {
+            client.destroy("timeout");
+        });
     }
 
     extractColorFromResponse (response) {
-        response = response.match(/.{1,2}/g);
-        const r = response[6];
-        const g = response[7];
-        const b = response[8];
+        let responseArray = response.match(/.{1,2}/g);
+        const r = responseArray[6];
+        const g = responseArray[7];
+        const b = responseArray[8];
         this.selectedColor = this.color("#" + r + g + b);
     }
 
     extractPowerStateFromResponse (response) {
-        response = response.match(/.{1,2}/g);
-        this.powerState = response[2] == "23"
+        let responseArray = response.match(/.{1,2}/g);
+        if(responseArray) this.powerState = responseArray[2] == "23"
     }
 
     setOn (callback) {
@@ -67,16 +70,21 @@ class WIFI370 {
         })
     }
 
-    setColor (colorArray, callback) {
-        colorArray.unshift(86);
-        colorArray.push(170);
-        this.send(colorArray, false, callback);
+    setColor (color, callback) {
+        this.selectedColor = color;
+        let rgbArray = color.rgb().round().array();
+        rgbArray.unshift(86);
+        rgbArray.push(170);
+        this.send(rgbArray, false, callback);
+    }
+
+    getColor(callback) {
+        callback(null, this.selectedColor);
     }
 
     setBrightness (value, callback) {
         this.selectedColor = this.selectedColor.value(value);
-        const rgbArray = this.selectedColor.rgb().round().array();
-        this.setColor(rgbArray, callback);
+        this.setColor(this.selectedColor, callback);
     }
 
     getBrightness (callback) {
@@ -88,8 +96,7 @@ class WIFI370 {
 
     setHue (value, callback) {
         this.selectedColor = this.selectedColor.hue(value);
-        const rgbArray = this.selectedColor.rgb().round().array();
-        this.setColor(rgbArray, callback);
+        this.setColor(this.selectedColor, callback);
     }
 
     getHue (callback) {
@@ -100,9 +107,8 @@ class WIFI370 {
     }
 
     setSaturation (value, callback) {
-        this.selectedColor = this.selectedColor.saturationv(value)
-        const rgbArray = this.selectedColor.rgb().round().array();
-        this.setColor(rgbArray, callback);
+        this.selectedColor = this.selectedColor.saturationv(value);
+        this.setColor(this.selectedColor, callback);
     }
 
     getSaturation (callback) {
