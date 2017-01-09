@@ -8,7 +8,7 @@ npm install wifi370-js-api
 ```
 ###Basic Usage
 ```
-const wifi370 = require('wifi370-js-api')("20.1.0.142",5577);
+const wifi370 = new (require('wifi370-js-api'))("20.1.0.142",5577);
 wifi370.setOn();
 wifi370.getOn((error, response) => {
 });
