@@ -1,0 +1,26 @@
+{
+  "name": "wifi370-js-api",
+  "version": "1.0.0",
+  "description": "small JavaScript interface for WIFI370 LED-Controller",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/wifi370.spec.js"
+  },
+  "keywords": [
+    "led",
+    "led controller",
+    "wifi 370",
+    "internet-of-things",
+    "iot",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Tristan Teufel",
+  "license": "ISC",
+  "dependencies": {
+    "color": "^1.0.3"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
