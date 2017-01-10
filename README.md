@@ -2,7 +2,7 @@
 :bulb: lightweight JavaScript interface for WIFI370 LED-Controller
 
 [![npm version](https://badge.fury.io/js/wifi370-js-api.svg)](https://badge.fury.io/js/wifi370-js-api)
-[![Dependency Status](https://david-dm.org/firsttris/wifi370-js-api.svg)](https://david-dm.org/firsttris/wifi370-js-api) 
+
 ```
 npm install wifi370-js-api
 ```
