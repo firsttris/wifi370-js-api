@@ -43,6 +43,8 @@ mocha test/wifi370.spec.js -g "setOff should switch off"
 
 ### Which hardware is used?
 
+####WIFI370-LED Controller
+
 ![Screenshot](https://dl.dropboxusercontent.com/u/13344648/dev/wifi370img.PNG)
 
 Link to Amazon (Germany): [Link](https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88)
