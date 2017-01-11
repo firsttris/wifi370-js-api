@@ -45,10 +45,12 @@ class WIFI370 {
 
     extractColorFromResponse (response) {
         let responseArray = response.match(/.{1,2}/g);
-        const r = responseArray[6];
-        const g = responseArray[7];
-        const b = responseArray[8];
-        this.selectedColor = this.color("#" + r + g + b);
+        if(responseArray) {
+            const r = responseArray[6];
+            const g = responseArray[7];
+            const b = responseArray[8];
+            this.selectedColor = this.color("#" + r + g + b);
+        }
     }
 
     extractPowerStateFromResponse (response) {

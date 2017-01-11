@@ -1,6 +1,6 @@
 {
   "name": "wifi370-js-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "lightweight JavaScript interface for WIFI370 LED-Controller",
   "main": "index.js",
   "scripts": {

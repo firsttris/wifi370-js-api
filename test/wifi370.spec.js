@@ -13,7 +13,7 @@ describe('Test WIFI370', function () {
             this.wifi370 = new WIFI370("191.167.0.1", "1234");
         });
 
-        it('getOn should return status', function (done) {
+        it('getOn should return timeout', function (done) {
             this.wifi370.getOn((error, response) => {
                 assert.equal(error, "timeout");
                 assert.equal(response, false, "should false if device is not reachable");
@@ -21,6 +21,16 @@ describe('Test WIFI370', function () {
                 done();
             });
         });
+
+        it('getBrightness should return timeout', function (done) {
+            this.wifi370.getBrightness((error, response) =>{
+                assert.equal(error, "timeout");
+                assert.equal(response, 100, "should false if device is not reachable");
+                console.log("Response: "+response);
+                done();
+            });
+        });
+
     });
 
     before(function () {
