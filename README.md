@@ -6,24 +6,34 @@
 ```
 npm install wifi370-js-api
 ```
+
+### Controller Support
+|Controller  | Supported     | Type  |
+| ---------- |:-------------:| -----:|
+| LW12       | [x]           | RGB   |
+| LD382      | [x]           | RGB   |
+| LD382A     | [x]           | RGB   |
+| LD686      | [x]           | RGBW  |
+
 ###Basic Usage
-```
-const wifi370 = new (require('wifi370-js-api'))("20.1.0.142",5577);
-wifi370.setOn();
-wifi370.getOn((error, response) => {
+```javascript
+const WIFI370 = require('wifi370-js-api');
+const controller = WIFI370('LW12','20.1.0.142',5577);
+controller.setOn();
+controller.getOn((error, response) => {
 });
-wifi370.setOff();
-wifi370.setColor(wifi370.color.rgb(255, 0, 0));
-wifi370.getColor((error, response) => {
+controller.setOff();
+controller.setColor(controller.color.rgb(255, 0, 0));
+controller.getColor((error, response) => {
 });
-wifi370.setBrightness(wifi370.color.value());
-wifi370.getBrightness((error, response) => {
+controller.setBrightness(controller.color.value());
+controller.getBrightness((error, response) => {
 });
-wifi370.setHue(wifi370.color.hue());
-wifi370.getHue((error, response) => {
+controller.setHue(controller.color.hue());
+controller.getHue((error, response) => {
 });
-wifi370.setSaturation(wifi370.color.saturationv());
-wifi370.getSaturation((error, response) => {
+controller.setSaturation(controller.color.saturationv());
+controller.getSaturation((error, response) => {
 });
 ```
 ###Tests

@@ -10,7 +10,7 @@ describe('Test WIFI370', function () {
 
     describe('Timeout Test', function () {
         before(function () {
-            this.wifi370 = new WIFI370("191.167.0.1", "1234");
+            this.wifi370 = WIFI370("LW12", "191.167.0.1", "1234");
         });
 
         it('getOn should return timeout', function (done) {
@@ -34,7 +34,7 @@ describe('Test WIFI370', function () {
     });
 
     before(function () {
-        this.wifi370 = new WIFI370(packageJson.ledController.host,5577);
+        this.wifi370 = WIFI370("LW12", packageJson.ledController.host,5577);
     });
 
     it('setOn should switch on', function (done) {
