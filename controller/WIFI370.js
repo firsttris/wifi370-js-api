@@ -15,7 +15,6 @@ class WIFI370 {
   send (array, waitForResponse, callback) {
     const client = new net.Socket();
     let response = "";
-    client.setTimeout(1500);
     client.connect(this.port, this.host, () => {
       const buffer = new Buffer(array);
       client.write(buffer);
