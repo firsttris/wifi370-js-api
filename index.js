@@ -5,7 +5,7 @@ const LD686 = require('./controller/LD686');
 
 let getContr = (controllerName, host, port) => {
   let controller;
-  if(controllerName === 'LW12') {
+  if(controllerName === 'LW12' || controllerName === '') {
     controller = new LW12(host, port)
   }
   if(controllerName === 'LD382A') {
@@ -15,7 +15,7 @@ let getContr = (controllerName, host, port) => {
     controller = new LD686(host, port)
   }
   if(controller === undefined) {
-    console.error("Controller " + controller + "could not be initialized");
+    console.error("Controller " + controllerName + "could not be initialized");
   }
   return controller
 };
