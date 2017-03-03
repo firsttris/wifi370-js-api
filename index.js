@@ -8,7 +8,7 @@ let getContr = (controllerName, host, port) => {
   if(controllerName === 'LW12' || controllerName === '') {
     controller = new LW12(host, port)
   }
-  if(controllerName === 'LD382A') {
+  if(controllerName === 'LD382A' || controllerName === 'LD382') {
     controller = new LD382A(host, port)
   }
   if(controllerName === 'LD686') {
