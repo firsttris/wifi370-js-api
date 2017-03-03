@@ -7,16 +7,6 @@
 npm install wifi370-js-api
 ```
 
-### Controller Support
-|Controller  | Supported     | Type  |
-| ---------- |:-------------:| -----:|
-| LW12       | [x]           | RGB   |
-| LD382      | [x]           | RGB   |
-| LD382A     | [x]           | RGB   |
-| LD686      | [x]           | RGBW  |
-
-Thanks to Meik Dirkes for reverse engineering the communication for all controller types.
-
 ###Basic Usage
 ```javascript
 const WIFI370 = require('wifi370-js-api');
@@ -54,6 +44,16 @@ mocha test/wifi370.spec.js -g "setOff should switch off"
 ```
 
 ### Which hardware is used?
+
+#### Controller Support
+|Controller  | Supported     | Type  |
+| ---------- |:-------------:| -----:|
+| LW12       | [x]           | RGB   |
+| LD382      | [x]           | RGB   |
+| LD382A     | [x]           | RGB   |
+| LD686      | [x]           | RGBW  |
+
+Thanks to Meik Dirkes for reverse engineering the communication for all controller types.
 
 ####WIFI370-LED Controller
 
