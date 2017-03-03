@@ -15,6 +15,8 @@ npm install wifi370-js-api
 | LD382A     | [x]           | RGB   |
 | LD686      | [x]           | RGBW  |
 
+Thanks to Meik Dirkes for reverse engineering the communication for all controller types.
+
 ###Basic Usage
 ```javascript
 const WIFI370 = require('wifi370-js-api');
