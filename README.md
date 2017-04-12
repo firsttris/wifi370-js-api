@@ -1,13 +1,14 @@
 # wifi370-js-api
 :bulb: lightweight JavaScript interface for WIFI370 LED-Controller
 
+## Install 
 [![npm version](https://badge.fury.io/js/wifi370-js-api.svg)](https://badge.fury.io/js/wifi370-js-api)
 
 ```
 npm install wifi370-js-api
 ```
 
-### Basic Usage
+## Basic Usage
 ```javascript
 const WIFI370 = require('wifi370-js-api');
 const controller = WIFI370('LW12','20.1.0.142',5577);
@@ -28,7 +29,7 @@ controller.setSaturation(controller.color.saturationv());
 controller.getSaturation((error, response) => {
 });
 ```
-### Tests
+## Tests
 Find more examples in "test" directory.
 
 Enter you hyperion server connection in package.json, and run some tests!
@@ -43,9 +44,9 @@ run a single test from commandline with:
 mocha test/wifi370.spec.js -g "setOff should switch off"
 ```
 
-### Which hardware is used?
+## Which hardware is used?
 
-#### Controller Support
+### Controller Support
 |Controller  | Supported     | Type  |
 | ---------- |:-------------:| -----:|
 | LW12       | [x]           | RGB   |
@@ -55,8 +56,11 @@ mocha test/wifi370.spec.js -g "setOff should switch off"
 
 Thanks to Meik Dirkes for reverse engineering the communication for all controller types.
 
-#### WIFI370-LED Controller
+### WIFI370-LED Controller
 
 ![Screenshot](https://github.com/firsttris/wifi370-js-api/blob/master/wiki/wifi370img.PNG)
 
 Link to Amazon (Germany): [Link](https://www.amazon.de/dp/B00Q6FKPZI/ref=cm_sw_r_tw_dp_x_HavByb4T01Q88)
+
+## License
+[MIT](http://opensource.org/licenses/MIT)
